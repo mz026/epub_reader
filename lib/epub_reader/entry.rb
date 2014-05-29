@@ -1,0 +1,3 @@
+class EpubReader::Entry
+
+end

@@ -1,0 +1,3 @@
+class EpubReader::TOCItem
+
+end
