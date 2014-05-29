@@ -1,18 +1,20 @@
 require 'spec_helper'
 
 describe EpubReader::Epub do
+  let(:spec_path) { Pathname.new(File.expand_path(File.dirname(__FILE__))) }
+  let(:epub_path) { spec_path.join('fixtures/epub20.epub') }
+  let(:random_hex) { 'random-hex' }
+  let(:toc_item) { double(:toc_item) }
+  let(:entry) { double(:entry) }
+
+  before :each do
+    SecureRandom.stub(:hex => random_hex)
+    Kernel.stub(:system => true)
+    EpubReader::TOCItem.stub(:create_from => [ toc_item ])
+    EpubReader::Entry.stub(:new => entry)
+  end
 
   describe '::new(epub_file_path)' do
-    let(:spec_path) { Pathname.new(File.expand_path(File.dirname(__FILE__))) }
-    let(:epub_path) { spec_path.join('fixtures/epub20.epub') }
-    let(:random_hex) { 'random-hex' }
-    let(:toc_item) { double(:toc_item) }
-
-    before :each do
-      SecureRandom.stub(:hex => random_hex)
-      Kernel.stub(:system => true)
-      EpubReader::TOCItem.stub(:create_from => [ toc_item ])
-    end
 
     it 'takes a file path to create' do
       EpubReader::Epub.new(epub_path)
@@ -37,6 +39,12 @@ describe EpubReader::Epub do
 
       EpubReader::Epub.new(epub_path)
     end
+  end
 
+  describe '#entries' do
+    it 'returns entries created' do
+      epub = EpubReader::Epub.new(epub_path)
+      epub.entries.should == [ entry ]
+    end
   end
 end
