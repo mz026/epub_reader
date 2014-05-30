@@ -29,6 +29,7 @@ describe EpubReader::Epub do
     it 'unzip the epub at random folder in /tmp' do
       Kernel.should_receive(:system).with("mkdir /tmp/#{random_hex}")
       Kernel.should_receive(:system).with("cp #{epub_path} /tmp/#{random_hex}")
+      Kernel.should_receive(:system).with("cd /tmp/#{random_hex} && unzip *.epub")
 
       EpubReader::Epub.new(epub_path)
     end
