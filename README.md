@@ -1,6 +1,6 @@
 # EpubReader
 
-TODO: Write a gem description
+EpubReader is a gem to parse epub file, including it's htmls and images
 
 ## Installation
 
@@ -28,7 +28,7 @@ Or install it yourself as:
         end
 
 
-## Documentation:
+## API Documentation:
 
 ### `EpubReader::Epub`
 
@@ -46,6 +46,10 @@ Or install it yourself as:
 
 - `#path`: returns the file path of the image
 
+
+## Tests:
+
+        $ rake test
 
 ## Contributing
 
