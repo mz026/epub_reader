@@ -18,15 +18,16 @@ Or install it yourself as:
 
 ## Usage
 
-        epub = EpubReader::Epub.new('/the/epub/path.epub')
-        epub.entries.each do |entry|
-          entry.html_text #=> html text
-          entry.title #=> entry title
-          entry.images.each do |image|
-            image.path #=> image file path
-          end
-        end
-
+```ruby
+epub = EpubReader::Epub.new('/the/epub/path.epub')
+epub.entries.each do |entry|
+  entry.html_text #=> html text
+  entry.title #=> entry title
+  entry.images.each do |image|
+    image.path #=> image file path
+  end
+end
+```
 
 ## API Documentation:
 
