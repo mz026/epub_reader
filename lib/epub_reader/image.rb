@@ -1,0 +1,3 @@
+class EpubReader::Image
+
+end
