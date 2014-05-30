@@ -18,7 +18,34 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+        epub = EpubReader::Epub.new('/the/epub/path.epub')
+        epub.entries.each do |entry|
+          entry.html_text #=> html text
+          entry.title #=> entry title
+          entry.images.each do |image|
+            image.path #=> image file path
+          end
+        end
+
+
+## Documentation:
+
+### `EpubReader::Epub`
+
+- `::new(epub_file_path)`: returns an epub instance
+- `#entries`: returns an array of `EpubReader::Entry`
+
+### `EpubReader::Entry`
+
+- `#title`: returns entry title
+- `#html_text`: returns html text of the entry
+- `#imags`: returns array of `EpubReader::Image`
+
+
+### `EpubReader::Image`
+
+- `#path`: returns the file path of the image
+
 
 ## Contributing
 

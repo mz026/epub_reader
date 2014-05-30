@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = EpubReader::VERSION
   spec.authors       = ["Yang-Hsing Lin"]
   spec.email         = ["yanghsing.lin@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{epub_reader is a gem to parse epub file, including it's htmls and images}
+  spec.summary       = %q{epub_reader is a gem to parse epub file, including it's htmls and images}
   spec.homepage      = ""
   spec.license       = "MIT"
 
