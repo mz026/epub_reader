@@ -23,7 +23,7 @@ describe EpubReader::Epub do
     it 'raises if file not exists' do
       expect {
         EpubReader::Epub.new('non-exists')
-      }.to raise_error(EpubReader::Epub::FileNotExistsException)
+      }.to raise_error(EpubReader::FileNotExistsException)
     end
 
     it 'unzip the epub at random folder in /tmp' do

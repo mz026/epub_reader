@@ -16,7 +16,7 @@ describe EpubReader::TOCItem do
     it 'raises if dir not exists' do
       expect {
         subject.create_from('non-exists')
-      }.to raise_error(subject::PathNotExistsException)
+      }.to raise_error(EpubReader::DirectoryNotExistsException)
     end
 
     it 'returns items in toc.ncx' do

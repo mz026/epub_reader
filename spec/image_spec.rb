@@ -16,7 +16,7 @@ describe EpubReader::Image do
       path = Pathname.new('non-exists')
       expect {
         image = subject.new(path)
-      }.to raise_error(EpubReader::Image::PathNotExistsException)
+      }.to raise_error(EpubReader::FileNotExistsException)
     end
   end
 

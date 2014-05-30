@@ -1,12 +1,9 @@
 require 'pathname'
 
 class EpubReader::Epub
-  class EpubReaderException < Exception; end
-  class FileNotExistsException < EpubReaderException; end
-
   attr_reader :entries
   def initialize epub_path
-    raise FileNotExistsException unless File.exists?(epub_path)
+    raise EpubReader::FileNotExistsException, "epub file #{epub_path} not exists" unless File.exists?(epub_path)
     @working_dir = "/tmp/#{SecureRandom.hex(5)}"
 
     Kernel.system("mkdir #{@working_dir}")

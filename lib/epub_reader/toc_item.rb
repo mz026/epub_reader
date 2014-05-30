@@ -1,11 +1,10 @@
 require 'nokogiri'
 class EpubReader::TOCItem
-  class TOCItemException < Exception; end
-  class PathNotExistsException < TOCItemException; end
-
   class << self
     def create_from unzipped_path
-      raise PathNotExistsException unless Dir.exists?(unzipped_path)
+      unless Dir.exists?(unzipped_path)
+        raise EpubReader::DirectoryNotExistsException, "unzipped directory #{unzipped_path} not exists" 
+      end
 
       ncx_path = Dir["#{unzipped_path}/**/*.ncx"].first
       ncx_dir = Pathname.new(File.expand_path(File.dirname(ncx_path)))

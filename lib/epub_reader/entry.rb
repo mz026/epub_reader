@@ -1,12 +1,9 @@
 require 'nokogiri'
 class EpubReader::Entry
-  class EntryException < Exception; end
-  class PathNotExistsException < EntryException; end
-
   attr_reader :title
   def initialize toc_item
     unless File.exists?(toc_item.path)
-      raise PathNotExistsException, "file #{toc_item.path} not exists" 
+      raise EpubReader::FileNotExistsException, "file #{toc_item.path} not exists" 
     end
 
     @title = toc_item.title

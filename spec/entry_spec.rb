@@ -23,7 +23,7 @@ describe EpubReader::Entry do
       toc_item.stub(:path => Pathname.new('non-exists'))
       expect {
         entry = subject.new(toc_item)
-      }.to raise_error(EpubReader::Entry::PathNotExistsException)
+      }.to raise_error(EpubReader::FileNotExistsException)
     end
   end
 
