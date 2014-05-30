@@ -12,7 +12,7 @@ describe EpubReader::Entry do
                       'wasteland-content.xhtml')
   end
 
-  let(:toc_item) { double(:title => title, :path => html_path) }
+  let(:toc_item) { double(:title => title, :html_path => html_path) }
 
   describe '::new(toc_item)' do
     it 'takes a toc item to init' do
@@ -20,7 +20,7 @@ describe EpubReader::Entry do
     end
 
     it 'raises if `toc_item` path not exists' do
-      toc_item.stub(:path => Pathname.new('non-exists'))
+      toc_item.stub(:html_path => Pathname.new('non-exists'))
       expect {
         entry = subject.new(toc_item)
       }.to raise_error(EpubReader::FileNotExistsException)

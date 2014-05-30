@@ -1,6 +1,31 @@
 require 'spec_helper'
 
 describe EpubReader::TOCItem do
+  subject { EpubReader::TOCItem }
+
+  describe '::new(:title => title, :html_path => html_path)' do
+    it 'takes an title and html path to init' do
+      subject.new(:title => 'the-title', :html_path => Pathname.new('html-path'))
+    end
+  end
+
+  describe '#html_path' do
+    let(:html_path) { Pathname.new('html-path') }
+
+    it 'returns html_path given' do
+      toc_item = subject.new(:title => 'the-title', :html_path => html_path)
+      toc_item.html_path.should == html_path
+    end
+  end
+
+  describe '#title' do
+    it 'returns title passed in' do
+      toc_item = subject.new(:title => 'the-title', :html_path => 'whatever')
+
+      toc_item.title.should == 'the-title'
+    end
+  end
+
   describe 'create_from(unzipped_path)' do
     subject { EpubReader::TOCItem }
     let(:unzipped_path) do
@@ -24,32 +49,32 @@ describe EpubReader::TOCItem do
       expected = [
         {
           :title => "I. THE BURIAL OF THE DEAD",
-          :path => ncx_path.join("wasteland-content.xhtml")
+          :html_path => ncx_path.join("wasteland-content.xhtml")
         },
         {
           :title => "II. A GAME OF CHESS",
-          :path => ncx_path.join("wasteland-content.xhtml")
+          :html_path => ncx_path.join("wasteland-content.xhtml")
         },
         {
           :title => "III. THE FIRE SERMON",
-          :path => ncx_path.join("wasteland-content.xhtml")
+          :html_path => ncx_path.join("wasteland-content.xhtml")
         },
         {
           :title => "IV. DEATH BY WATER",
-          :path => ncx_path.join("wasteland-content.xhtml")
+          :html_path => ncx_path.join("wasteland-content.xhtml")
         },
         {
           :title => "V. WHAT THE THUNDER SAID",
-          :path => ncx_path.join("wasteland-content.xhtml")
+          :html_path => ncx_path.join("wasteland-content.xhtml")
         },
         {
           :title => 'NOTES ON "THE WASTE LAND"',
-          :path => ncx_path.join("wasteland-content.xhtml")
+          :html_path => ncx_path.join("wasteland-content.xhtml")
         },
       ]
 
       toc_items.map do |i|
-        { :title => i.title, :path => i.path }
+        { :title => i.title, :html_path => i.html_path }
       end.should == expected
     end
   end

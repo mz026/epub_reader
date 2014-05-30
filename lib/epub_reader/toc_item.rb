@@ -16,7 +16,7 @@ class EpubReader::TOCItem
 
         new({
           :title => n.xpath('.//xmlns:text').text,
-          :path => ncx_dir.join(relative_path)
+          :html_path => ncx_dir.join(relative_path)
         })
       end
     end
@@ -24,9 +24,9 @@ class EpubReader::TOCItem
   end
 
 
-  attr_reader :title, :path
+  attr_reader :title, :html_path
   def initialize options
     @title = options[:title]
-    @path = options[:path]
+    @html_path = options[:html_path]
   end
 end
