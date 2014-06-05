@@ -1,4 +1,5 @@
 require 'pathname'
+require "securerandom"
 
 class EpubReader::Epub
   attr_reader :entries
